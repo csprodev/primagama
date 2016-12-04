@@ -12,15 +12,16 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::group(['namespace' => 'Client'], function () {
+    Route::get('/', ['uses' => 'IndexController@index']);
+	Route::get('/about', ['uses' => 'AboutController@index']);
+	Route::get('/contact', ['uses' => 'ContactController@index']);
+	Route::get('/gallery', ['uses' => 'GalleryController@index']);
+});
 
-Route::get('/', ['uses' => 'IndexController@index']);
-Route::get('/about', ['uses' => 'AboutController@index']);
-Route::get('/contact', ['uses' => 'ContactController@index']);
-Route::get('/gallery', ['uses' => 'GalleryController@index']);
-
+Route::group(['namespace'=> 'Admin'], function(){
+	Route::get('/admin', ['uses' => 'IndexController@index']);
+});
 
 Route::get('/single', function(){
 	return view('single');
